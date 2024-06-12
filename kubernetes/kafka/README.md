@@ -2,7 +2,7 @@
 
 To deploy Kafka on the K8s cluster:
 ```sh
-cd kubernetes/kafka-manifests/
+cd kubernetes/kafka/
 kubectl apply -f .
 ```
 
