@@ -19,6 +19,12 @@ spec:
           - containerPort: 8080
           env:
           - name: KAFKA_SERVER
-            value: "kafka:29092"
+            valueFrom:
+              configMapKeyRef:
+                name: health-check-service-cm
+                key: kafka_server
           - name: KAFKA_TOPIC
-            value: "health_check_topic"
+            valueFrom:
+              configMapKeyRef:
+                name: health-check-service-cm
+                key: kafka_topic
