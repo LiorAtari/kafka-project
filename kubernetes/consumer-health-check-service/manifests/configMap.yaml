@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: consumer-health-check-service-cm
+data:
+  kafka_server: "kafka:29092"
+  kafka_topic: "health_check_topic"

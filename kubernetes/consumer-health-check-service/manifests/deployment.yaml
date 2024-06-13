@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-health-check-service
+spec:
+  selector:
+    matchLabels:
+      app: consumer-health-check-service
+  template:
+    metadata:
+      labels:
+        app: consumer-health-check-service
+    spec:
+      containers:
+        - name: consumer-health-check-service
+          image: lioratari/health_check_service:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          env:
+          - name: KAFKA_SERVER
+            valueFrom:
+              configMapKeyRef:
+                name: consumer-health-check-service-cm
+                key: kafka_server
+          - name: KAFKA_TOPIC
+            valueFrom:
+              configMapKeyRef:
+                name: consumer-health-check-service-cm
+                key: kafka_topic
