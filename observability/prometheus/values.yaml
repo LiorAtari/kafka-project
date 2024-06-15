@@ -1,0 +1,17 @@
+server:
+  global:
+    scrape_interval: 15s
+# Adding scraping of the all the services when you deploy Prometheus
+extraScrapeConfigs: |
+  - job_name: 'kafka-exporter'
+    static_configs:
+      - targets:
+          - kafka-exporter.kafka.svc.cluster.local:9308
+  - job_name: 'consumer-health-check-service'
+    static_configs:
+      - targets: 
+          - consumer-health-check-service.consumer-health-check-service.svc.cluster.local:80
+  - job_name: 'health-check-service'
+    static_configs:
+      - targets: 
+          - health-check-service.health-check-service.svc.cluster.local:80
