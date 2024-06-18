@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-check-service
+spec:
+  selector:
+    matchLabels:
+      app: health-check-service
+  template:
+    metadata:
+      labels:
+        app: health-check-service
+    spec:
+      containers:
+        - name: health-check-service
+          image: lioratari/health_check_service:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          env:
+          - name: KAFKA_SERVER
+            value: "kafka:29092"
+          - name: KAFKA_TOPIC
+            value: "health_check_topic"

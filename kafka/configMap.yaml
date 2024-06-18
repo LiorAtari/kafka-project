@@ -3,4 +3,16 @@ kind: ConfigMap
 metadata:
   name: kafka-cm
 data:
+  # Kafka statefulSet
   kafka_server: "kafka:29092"
+  kafka_advertised_listeners: "INTERNAL://:29092,LISTENER_EXTERNAL://:9092"
+  kafka_auto_create_topics_enable: "true"
+  kafka_inter_broker_listener_name: "INTERNAL"
+  kafka_listeners: "INTERNAL://:29092,LISTENER_EXTERNAL://:9092"
+  kafka_listener_security_protocol_map: "INTERNAL:PLAINTEXT,LISTENER_EXTERNAL:PLAINTEXT"
+  kafka_zookeeper_connect: "zookeeper:2181"
+  # Kafka ZooKeeper
+  zookeeper_client_port: "2181"
+  zookeeper_data_dir: "/var/lib/zookeeper/data"
+  zookeeper_log_dir: "/var/lib/zookeeper/log"
+  zookeeper_server_id: "1"

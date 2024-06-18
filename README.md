@@ -24,7 +24,13 @@ chmod +x run.sh
 ```
 This script will deploy all of the services to their own namespace along with everything needed for them to run.
 
+3. Run the `run.sh` file to install all components:
+```sh
+./run.sh
+```
+
 You can now run this command to view the logs of the Python services:
+#### NOTE - Logs for the health services might take time to appear
 ```sh
 kubectl logs -f <pod-name> -n <namespace>
 ```

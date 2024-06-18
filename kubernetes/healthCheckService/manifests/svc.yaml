@@ -7,7 +7,6 @@ spec:
     app: health-check-service
   ports:
     - protocol: TCP
-      name: http
       port: 80
       targetPort: 8080
   type: ClusterIP

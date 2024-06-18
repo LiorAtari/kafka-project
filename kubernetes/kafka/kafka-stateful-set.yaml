@@ -28,35 +28,17 @@ spec:
           - containerPort: 9092
         env:
           - name: KAFKA_ADVERTISED_LISTENERS
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-cm
-                key: kafka_advertised_listeners
+            value: "INTERNAL://:29092,LISTENER_EXTERNAL://:9092"
           - name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-cm
-                key: kafka_auto_create_topics_enable
+            value: "true"
           - name: KAFKA_INTER_BROKER_LISTENER_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-cm
-                key: kafka_inter_broker_listener_name
+            value: "INTERNAL"
           - name: KAFKA_LISTENERS
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-cm
-                key: kafka_listeners
+            value: "INTERNAL://:29092,LISTENER_EXTERNAL://:9092"
           - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-cm
-                key: kafka_listener_security_protocol_map
+            value: "INTERNAL:PLAINTEXT,LISTENER_EXTERNAL:PLAINTEXT"
           - name: KAFKA_ZOOKEEPER_CONNECT
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-cm
-                key: kafka_zookeeper_connect
+            value: "zookeeper:2181"
         resources: {}
         volumeMounts:
           - mountPath: /var/lib/kafka/

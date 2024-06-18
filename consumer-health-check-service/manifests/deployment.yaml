@@ -13,8 +13,13 @@ spec:
     spec:
       containers:
         - name: consumer-health-check-service
-          image: lioratari/health_check_service:latest
+          image: lioratari/consumer-health-check-service:latest
           imagePullPolicy: Always
+          resources:
+            requests:
+              memory: '200Mi'
+            limits:
+              memory: '400Mi'
           ports:
           - containerPort: 8080
           env:
